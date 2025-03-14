@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link href='https://fonts.googleapis.com/css?family=Plus Jakarta Sans' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.min.css">
+
+  
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+<body class="mx-sm-2">
+  <div class="container d-md-flex align-items-start justify-content-center p-0">
+    <div class="px-3 py-4 my-sm-1 mx-lg-3 input-div">
+      <header class="d-flex justify-content-between align-items-center mb-4">
+        <h5>Mortgage calculator</h5>
+        <a href="#" class="small custom-slateBlue " onclick="clearAll()">Clear All</a>
+      </header>
+
+      <form class="row g-4  needs-validation" novalidate>
+        <div class="col-12">
+          <label for="amount" class="form-label small mortgage-labels">Mortgage Amount</label>
+          <div class="input-group has-validation ">
+            <span class="input-group-text mortgage-spans border-end-0" >£</span>
+            <input type="text" class="form-control border-start-0 shadow-none" id="amountFormatted" required>
+            <input type="hidden" class="form-control border-start-0 shadow-none" id="amount"  required>
+          </div>
+          <div class="invalid-feedback">
+            Field is Required.
+          </div>        
+        </div>
+
+
+        <div class="col-6 ">
+          <label for="years" class="form-label small mortgage-labels">Mortgage Term</label>
+          <div class="input-group ">
+            <input type="number" step="0.1" class="form-control border-end-0 shadow-none" id="years"  required>
+            <span class="input-group-text mortgage-spans border-start-0" >years</span>
+          </div>
+          <div class="invalid-feedback ">
+            Field is Required
+          </div>        
+        </div>
+
+        <div class="col-6">
+          <label for="rate" class="form-label small mortgage-labels">Interest Rate</label>
+          <div class="input-group">
+            <input type="number" step="0.1"  class="form-control border-end-0 shadow-none" id="rate"  required>
+            <span class="input-group-text mortgage-spans border-start-0" >%</span>
+          </div>
+          <div class="invalid-feedback">
+            Field is Required
+          </div>        
+        </div>
+
+        <div class="col-12">
+          <label for="type" class="form-label small mortgage-labels">Mortage Type</label>
+          <div class="input-group-text py-2 bg-white d-flex align-items-center justify-content-between typeBar mb-2">
+            <div class="d-flex align-items-center">
+              <input  type="radio" name="flexRadioDefault" class="mx-2 type-radios" id="flexRadioDefault1">
+              <label for="flexRadioDefault1" class="ms-2 inner-labels fw-medium "> Repayment</label>
+            </div>
+          </div>
+          <div class="input-group-text py-2 bg-white d-flex align-items-center justify-content-between typeBar   ">
+            <div class="d-flex align-items-center">
+              <input  type="radio" name="flexRadioDefault" class="mx-2 type-radios" id="flexRadioDefault2">
+              <label for="flexRadioDefault2" class="ms-2 inner-labels fw-medium"> Interest Only</label>
+            </div>
+          </div>
+
+
+          <div class="invalid-feedback">
+            Field is Required
+          </div>        
+        </div>
+
+
+
+        
+        <div class="col-12">
+          <button class="btn my-2  fw-semibold rounded-pill custom-btn d-flex flex-row align-items-center justify-content-center " type="submit"> <img src="assets/images/icon-calculator.svg" alt="" class="calculator-image me-2">Calculate Repayments</button>
+        </div>
+      </form>
+      
+
+    </div>
+    <!-- <div id="result-div">
+      <div class="d-flex flex-column align-items-center justify-content-center text-center mx-4 py-5  my-5">
+          <img src="assets/images/illustration-empty.svg" alt="">
+          <h1 class="text-white fs-4">Results shown here</h1>
+          <p class="small custom-slateGrey p-1"> Complete the form and click "calculate repayments" to see what your monthly repayments would be</p>
+      </div>
+    </div> -->
+
+    <div id="result-div" >
+      <div class="d-flex flex-column align-items-center justify-content-center text-center mx-4 py-5  my-sm-5" id="resultEmpty">
+        <img src="assets/images/illustration-empty.svg" alt="">
+        <h1 class="text-white fs-4">Results shown here</h1>
+        <p class="small custom-slateGrey pb-sm-5"> Complete the form and click "calculate repayments" to see what your monthly repayments would be</p>
+      </div>
+
+      <div class="MainResult pt-4 mt-2 mx-sm-3 px-4 pb-5 mb-sm-5" id="repaymentPage" style="display: none;">
+        <p class="text-white fs-5 fw-semibold">Your results</p>
+        <p class="small custom-slateBlue mb-5"> Your results are shown based on the information you provided to adjust the results, edit the form and click "calculate repayments" again.</p>
+        <div class="resultBar rounded p-4">
+          <!-- <div class="rounded"></div> -->
+          <p class="small">Your monthly repayments</p>
+          <h1 class="">£1,797.74</h1>
+  
+          <hr>
+  
+          <p class="small">Total you"ll repay over the term</p>
+          <h5 class="text-white">£539,322.94</h5>
+        </div>
+  
+      </div>
+    </div>
+
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Olatona Enoch</a>.
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>

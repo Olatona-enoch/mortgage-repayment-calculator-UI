@@ -1,0 +1,230 @@
+
+:root{
+    // ### Primary
+    --Lime: hsl(61, 70%, 52%);
+    --Red: hsl(4, 69%, 50%);
+
+    //### Neutral
+    --White: hsl(0, 0%, 100%);
+    --Slate-100: hsl(202, 86%, 94%);
+    --Slate-300: hsl(203, 41%, 72%);
+    --Slate-500: hsl(200, 26%, 54%);
+    --Slate-700: hsl(200, 24%, 40%);
+    --Slate-900: hsl(202, 55%, 16%);
+
+};
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 701px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+
+//form validation
+// $form-valid-color:    none;
+// $form-valid-border-color:           none;
+// $form-invalid-color:                none;
+// $form-invalid-border-color:         none;
+// $form-feedback-icon-valid:      none;
+// $form-feedback-icon-invalid:   none;
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/bootstrap";
+body{
+    background-color: var(--Slate-100);
+    font-family: 'Plus Jakarta Sans';
+    padding: 0;
+    margin: 0;
+}
+.container{
+    background-color: var(--White);
+    max-width: 1005px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+.input-div{
+    width: 50%;
+}
+header{
+    h5{
+        color: var(--Slate-900);
+    }
+} 
+.mortgage-labels{
+    color: var(--Slate-700);
+}
+.input-group{
+    border:  1.5px solid var(--Slate-500)!important;
+    border-radius: 7px;
+}
+.input-group.onfocus{
+    border:  1.5px solid var(--Lime)!important;
+    border-radius: 7px;
+}
+.input-group:hover{
+    border:  1.5px solid var(--Slate-900)!important;
+}
+
+.mortgage-spans.onfocus{
+    background-color: var(--Lime);
+    border: var(--Lime);
+    color: var(--Slate-900);
+
+
+}
+.mortgage-spans{
+    background-color: var(--Slate-100);
+    color: var(--Slate-700);
+    border: var(--Slate-100);
+}
+.type-radios {
+    appearance: none; 
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--Slate-900);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.type-radios:checked {
+    background-color: var(--White);
+    border: 1px solid var(--Lime);
+
+}
+
+.type-radios:checked::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: var(--Lime);
+    border-radius: 50%;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-53%, -50%);
+}
+
+.calculator-image{
+    width: 20px;
+    height: 20px;
+}
+
+.custom-btn{
+    width: 58%;
+    color: var(--Slate-900);
+    background-color: var(--Lime);
+    padding: 10px;
+    font-size: 15px;
+}
+.custom-btn:hover{
+    color: var(--Slate-900);
+    background-color:hsl(61, 57%, 72%) ;
+}
+.typeBar{
+    border: 1.5px solid var(--Slate-500);
+    background-color:white !important;
+
+}
+.typeBar.picked{
+    border-color: var(--Lime) !important;
+    background-color:  hsl(60, 60%, 90%) !important;
+}
+.typeBar:hover{
+    border-color: var(--Lime);
+
+}
+
+.inner-labels{
+    color: var(--Slate-900);
+}
+#result-div{
+    background-color: var(--Slate-900);
+    // width: 500px;
+    // height: 510px;
+    width: 50%;
+    height: 100%;
+    // padding:100px 0px;
+    border-radius: 0px 20px 20px 100px;
+}
+.custom-slateGrey{
+    color: var(--Slate-300);
+}
+.custom-slateBlue{
+    color:  var(--Slate-500);
+}
+.form-control:focus{
+    --bs-focus-ring-color: none !important;
+    border-color: transparent;
+    outline: none;
+    
+}
+
+.resultBar{
+    background-color: rgba(9, 9, 9, 0.386);
+    background-blend-mode: lighten;
+    border-top: 4px solid var(--Lime);
+    // opacity: 60%;
+
+    div{
+        height: 2.5px;
+        background-color: var(--Lime);
+    }
+    p{
+        color: var(--Slate-500);
+    }
+    hr{
+        color: var(--Slate-700);
+        padding: 2px;
+        height: 2px;
+        
+    }
+    h1{
+        color: var(--Lime) ;
+        font-weight: bold;
+    }
+    
+}
+
+.attribution { 
+    font-size: 11px; text-align: center;
+    a { 
+        color: hsl(228, 45%, 44%); 
+    }
+}
+@media (min-width: 700px) and (max-width: 812px) {
+    .custom-btn{
+        width: 80%;
+    }
+}    
+@media screen and (max-width:700px) {
+    .container{
+        background-color: var(--White);
+        max-width: 1005px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border-radius: 0px;
+    }
+    .input-div{
+        width: 100%;
+    }
+    #result-div{
+        width: 100%;
+        border-radius: 0px;
+
+    }
+    .attribution{
+        display: none;
+    }
+}
+@media screen and (max-width:396px) {
+    .custom-btn{
+        width: 100%;
+    }
+}

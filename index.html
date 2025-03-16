@@ -27,9 +27,9 @@
       <form class="row g-4  needs-validation" novalidate>
         <div class="col-12">
           <label for="amount" class="form-label small mortgage-labels">Mortgage Amount</label>
-          <div class="input-group has-validation ">
-            <span class="input-group-text mortgage-spans border-end-0" >£</span>
-            <input type="text" class="form-control border-start-0 shadow-none" id="amountFormatted" required>
+          <div class="input-group rounded-2 has-validation ">
+            <span class="input-group-text rounded-start-1 mortgage-spans border-end-0 px-3" >£</span>
+            <input type="text" class="form-control rounded-end-1 border-start-0 shadow-none" id="amountFormatted" required>
             <input type="hidden" class="form-control border-start-0 shadow-none" id="amount"  required>
           </div>
           <div class="invalid-feedback">
@@ -38,39 +38,39 @@
         </div>
 
 
-        <div class="col-6 ">
+        <div class="col-12 col-md-6 ">
           <label for="years" class="form-label small mortgage-labels">Mortgage Term</label>
-          <div class="input-group ">
-            <input type="number" step="0.1" class="form-control border-end-0 shadow-none" id="years"  required>
-            <span class="input-group-text mortgage-spans border-start-0" >years</span>
+          <div class="input-group rounded-2 ">
+            <input type="number" step="0.1" class="form-control rounded-start-1 border-end-0 shadow-none" id="years"  required>
+            <span class="input-group-text mortgage-spans rounded-end-1 border-start-0 px-3" >years</span>
           </div>
           <div class="invalid-feedback ">
             Field is Required
           </div>        
         </div>
 
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <label for="rate" class="form-label small mortgage-labels">Interest Rate</label>
-          <div class="input-group">
-            <input type="number" step="0.1"  class="form-control border-end-0 shadow-none" id="rate"  required>
-            <span class="input-group-text mortgage-spans border-start-0" >%</span>
+          <div class="input-group rounded-2">
+            <input type="number" step="0.01"  class="form-control rounded-start-1 border-end-0 shadow-none" id="rate"  required>
+            <span class="input-group-text mortgage-spans rounded-end-1 border-start-0 px-3" >%</span>
           </div>
           <div class="invalid-feedback">
             Field is Required
           </div>        
         </div>
 
-        <div class="col-12">
+        <div class="col-12 MortageTypeBox">
           <label for="type" class="form-label small mortgage-labels">Mortage Type</label>
           <div class="input-group-text py-2 bg-white d-flex align-items-center justify-content-between typeBar mb-2">
-            <div class="d-flex align-items-center">
-              <input  type="radio" name="flexRadioDefault" class="mx-2 type-radios" id="flexRadioDefault1">
+            <div class="d-flex align-items-center py-1">
+              <input  type="radio" name="flexRadioDefault" class="mx-2  type-radios" id="flexRadioDefault1" required>
               <label for="flexRadioDefault1" class="ms-2 inner-labels fw-medium "> Repayment</label>
             </div>
           </div>
           <div class="input-group-text py-2 bg-white d-flex align-items-center justify-content-between typeBar   ">
-            <div class="d-flex align-items-center">
-              <input  type="radio" name="flexRadioDefault" class="mx-2 type-radios" id="flexRadioDefault2">
+            <div class="d-flex align-items-center py-1">
+              <input  type="radio" name="flexRadioDefault" class="mx-2 p-0 type-radios" id="flexRadioDefault2" required>
               <label for="flexRadioDefault2" class="ms-2 inner-labels fw-medium"> Interest Only</label>
             </div>
           </div>

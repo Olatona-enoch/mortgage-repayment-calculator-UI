@@ -15,18 +15,65 @@ const InvalidFeedback = document.querySelectorAll(".invalid-feedback");
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
+          const formFields = form.querySelectorAll(".input-group");
+          formFields.forEach(field => {
+                field.classList.add("invalid");
+                const span = field.querySelector(".mortgage-spans");
+                span.classList.add("invalid");
+                const message = field.parentElement.querySelector(".invalid-feedback");
+                message.style.display = "block"
+           });
           
 
         }else{
+            const formFields = form.querySelectorAll(".input-group");
+            formFields.forEach(field => {
+                field.classList.remove("invalid");
+                const span = field.querySelector(".mortgage-spans");
+                span.classList.remove("invalid");
+                const message = field.parentElement.querySelector(".invalid-feedback");
+                message.style.display = "none"
+            });
             event.preventDefault();
             repayment(event);
         }
   
         form.classList.add('was-validated')
+        // const formFields = form.querySelectorAll(".input-group");
+        // formFields.forEach(field => {
+        //     const span = field.querySelector(".mortgage-spans");
+        //     // const formControl 
+        //     const message = field.parentElement.querySelector(".invalid-feedback");
+        //     if (field.classList.contains("is-invalid")) {
+        //         field.classList.add("invalid");
+        //         span.classList.add("invalid");
+        //         message.style.display = "block"
+  
+        //     }else{
+        //         field.classList.remove("invalid");
+        //         span.classList.remove("invalid");
+        //         message.style.display = "none"
+        //     }
+        //  });
+
       }, false)
     })
 })();
+// document.addEventListener("DOMContentLoaded", function () {
+//     const inputs = document.querySelectorAll(".form-control");
 
+//     inputs.forEach(input => {
+//         input.addEventListener("input", function () {
+//             const inputGroup = this.closest(".input-group");
+
+//             if (this.classList.contains("is-invalid")) {
+//                 inputGroup.classList.add("invalid"); // Add class to input-group
+//             } else {
+//                 inputGroup.classList.remove("invalid"); // Remove class if valid
+//             }
+//         });
+//     });
+// });
 //removing invalid characters in the input 
 var invalidChars = ["-", "e", "+", "E"];
 
@@ -60,8 +107,13 @@ typeRadios.forEach(radio => {
 
         // Add 'picked' class to the parent typeBar of the selected radio
         let typeBar = radio.closest(".typeBar");
+        let invalidMessage = typeBar.parentElement.querySelector(".invalid-feedback");
         if (radio.checked) {
             typeBar.classList.add("picked");
+            invalidMessage.style.display = "none";
+            
+        }else{
+            invalidMessage.style.display = "block";
         }
     });
 });

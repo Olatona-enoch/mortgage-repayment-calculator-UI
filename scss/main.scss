@@ -22,17 +22,48 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px
 );
+// @import '../node_modules/bootstrap/scss/mixins/forms';
+// @mixin form-validation-state(
+//   $state,
+//   $color,
+//   $icon,
+//   $tooltip-color: color-contrast($color),
+//   $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+//   $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity),
+//   $border-color: $color
+// ) {
+//     .input-group {
+//         > .form-control:not(:focus),
+//         > .form-select:not(:focus),
+//         > .form-floating:not(:focus-within) {
+//           @include form-validation-state-selector($state) {
+//             @if $state == "valid" {
+//               z-index: 3;
+//             } @else if $state == "invalid" {
+//               z-index: 4;
+//               border:  1.5px solid var(--Red)!important;
+//             }
+//           }
+//         }
+//     }
+    
+// }
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
 
-
-//form validation
-// $form-valid-color:    none;
-// $form-valid-border-color:           none;
-// $form-invalid-color:                none;
-// $form-invalid-border-color:         none;
-// $form-feedback-icon-valid:      none;
-// $form-feedback-icon-invalid:   none;
-// @import "~bootstrap/scss/functions";
-// @import "~bootstrap/scss/variables";
+// $enable-validation-icons: false;
+// $form-validation-states: (
+//   "valid": (
+//     "color": transparent,
+//     "icon": none,
+//     // "border-color":transparent,
+//   ),
+//   "invalid": (
+//     "color": red,
+//     "icon": none,
+//     "border-color": red,
+//   )
+// );
 @import "~bootstrap/scss/bootstrap";
 body{
     background-color: var(--Slate-100);
@@ -55,21 +86,45 @@ header{
         color: var(--Slate-900);
     }
 } 
+
+.was-validated {
+    .form-control:valid {
+        background-image: none !important;
+        border-color: transparent;
+    }
+
+    .form-control:invalid {
+        background-image: none !important;
+        border-color: transparent;    
+    }
+    .form-control:invalid{
+        border:  1.5px solid var(--Red)!important;
+    }
+    .mortgage-spans:invalid{
+        background-color: var(--Red);
+        color: var(--White);
+        border: var(--Red);
+    }  
+}
+
 .mortgage-labels{
     color: var(--Slate-700);
 }
 .input-group{
     border:  1.5px solid var(--Slate-500)!important;
-    border-radius: 7px;
+    height: 45px;
+    
 }
 .input-group.onfocus{
     border:  1.5px solid var(--Lime)!important;
-    border-radius: 7px;
+    
 }
 .input-group:hover{
     border:  1.5px solid var(--Slate-900)!important;
 }
-
+.input-group.invalid{
+    border:  1.5px solid var(--Red)!important;
+}
 .mortgage-spans.onfocus{
     background-color: var(--Lime);
     border: var(--Lime);
@@ -81,6 +136,11 @@ header{
     background-color: var(--Slate-100);
     color: var(--Slate-700);
     border: var(--Slate-100);
+}
+.mortgage-spans.invalid{
+    background-color: var(--Red);
+    color: var(--White);
+    border: var(--Red);
 }
 .type-radios {
     appearance: none; 
@@ -108,7 +168,7 @@ header{
     position: absolute;
     top: 52%;
     left: 50%;
-    transform: translate(-53%, -50%);
+    transform: translate(-45%, -50%);
 }
 
 .calculator-image{
@@ -150,7 +210,7 @@ header{
     // height: 510px;
     width: 50%;
     height: 100%;
-    // padding:100px 0px;
+    padding:10px 0px;
     border-radius: 0px 20px 20px 100px;
 }
 .custom-slateGrey{

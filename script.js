@@ -1,5 +1,26 @@
 const typeRadios = document.querySelectorAll(".type-radios");
 const InvalidFeedback = document.querySelectorAll(".invalid-feedback");
+const formControls = document.querySelectorAll(".form-control");
+
+function customValidation(control) {
+    const inputGroup = control.closest(".input-group");
+    let span = inputGroup.querySelector(".mortgage-spans");
+    const message = inputGroup.parentElement.querySelector(".invalid-feedback");
+
+
+    const checkInput = control.checkValidity();
+    if (!checkInput) {
+        inputGroup.classList.add("invalid");
+        span.classList.add("invalid");
+        message.style.display = "block"
+          
+    }else{
+        inputGroup.classList.remove("invalid");
+        span.classList.remove("invalid");
+        message.style.display = "none"
+    }
+
+}
 
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -7,55 +28,34 @@ const InvalidFeedback = document.querySelectorAll(".invalid-feedback");
     'use strict'
   
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-  
+    const forms = document.querySelectorAll('.needs-validation');
+
     // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
       form.addEventListener('submit', event => {
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
-          const formFields = form.querySelectorAll(".input-group");
-          formFields.forEach(field => {
-                field.classList.add("invalid");
-                const span = field.querySelector(".mortgage-spans");
-                span.classList.add("invalid");
-                const message = field.parentElement.querySelector(".invalid-feedback");
-                message.style.display = "block"
-           });
           
+          formControls.forEach(control => customValidation(control));
+
+          const isRadioChecked = document.querySelector('input[name="flexRadioDefault"]:checked');
+          const mortgageTypeBox = document.querySelector(".MortageTypeBox");
+          const radioError = mortgageTypeBox.querySelector(".invalid-feedback");
+          if (!isRadioChecked) {
+              radioError.style.display = "block";
+          }
 
         }else{
-            const formFields = form.querySelectorAll(".input-group");
-            formFields.forEach(field => {
-                field.classList.remove("invalid");
-                const span = field.querySelector(".mortgage-spans");
-                span.classList.remove("invalid");
-                const message = field.parentElement.querySelector(".invalid-feedback");
-                message.style.display = "none"
-            });
             event.preventDefault();
             repayment(event);
         }
   
         form.classList.add('was-validated')
-        // const formFields = form.querySelectorAll(".input-group");
-        // formFields.forEach(field => {
-        //     const span = field.querySelector(".mortgage-spans");
-        //     // const formControl 
-        //     const message = field.parentElement.querySelector(".invalid-feedback");
-        //     if (field.classList.contains("is-invalid")) {
-        //         field.classList.add("invalid");
-        //         span.classList.add("invalid");
-        //         message.style.display = "block"
-  
-        //     }else{
-        //         field.classList.remove("invalid");
-        //         span.classList.remove("invalid");
-        //         message.style.display = "none"
-        //     }
-        //  });
-
+        formControls.forEach(control => {
+            control.addEventListener("input", () => customValidation(control));
+        });
+            
       }, false)
     })
 })();
@@ -118,8 +118,6 @@ typeRadios.forEach(radio => {
     });
 });
 
-const formControls = document.querySelectorAll(".form-control");
-
 formControls.forEach(form => {
     form.addEventListener("focus", function () {
         const inputGroup = form.closest(".input-group");
@@ -141,6 +139,25 @@ formControls.forEach(form => {
             span.classList.remove("onfocus");
         }
     });
+    // form.addEventListener("input",function(){
+    //     const inputGroup = form.closest(".input-group");
+    //     let span = inputGroup.querySelector(".mortgage-spans");
+    //     const message = inputGroup.parentElement.querySelector(".invalid-feedback");
+
+
+    //     const checkInput = form.reportValidity();
+    //     if (!checkInput) {
+    //         inputGroup.classList.add("invalid");
+    //         span.classList.add("invalid");
+    //         message.style.display = "block"
+              
+    //     }else{
+    //         inputGroup.classList.remove("invalid");
+    //         span.classList.remove("invalid");
+    //         message.style.display = "none"
+    //     }
+
+    // });
 });
 //-----Repayment------
 // formula => M = P * ( r(1 + r)^n/ (1 + r)^n - 1);
@@ -210,7 +227,7 @@ function repayment(event) {
 function clearAll() {
     //to clear all the values in the form
     formControls.forEach(form => {
-        form.value = " ";
+        form.value = "";
     });
     typeRadios.forEach(radio => {
         radio.checked = false;

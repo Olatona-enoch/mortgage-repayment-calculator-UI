@@ -30,7 +30,7 @@
           <div class="input-group rounded-2 has-validation ">
             <span class="input-group-text rounded-start-1 mortgage-spans border-end-0 px-3" >£</span>
             <input type="text" class="form-control rounded-end-1 border-start-0 shadow-none" id="amountFormatted" required>
-            <input type="hidden" class="form-control border-start-0 shadow-none" id="amount"  required>
+            <input class="form-control border-start-0 shadow-none" id="amount"  required style="display: none;">
           </div>
           <div class="invalid-feedback">
             Field is Required.
@@ -61,7 +61,7 @@
         </div>
 
         <div class="col-12 MortageTypeBox">
-          <label for="type" class="form-label small mortgage-labels">Mortage Type</label>
+          <label for="#" class="form-label small mortgage-labels">Mortage Type</label>
           <div class="input-group-text py-2 bg-white d-flex align-items-center justify-content-between typeBar mb-2">
             <div class="d-flex align-items-center py-1">
               <input  type="radio" name="flexRadioDefault" class="mx-2  type-radios" id="flexRadioDefault1" required>
